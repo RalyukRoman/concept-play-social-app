@@ -1,0 +1,118 @@
+﻿<Page x:Class="ConceptPlay.Pages.PageAdmin"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="850"
+      Title="Admin" Background="#F5F5F5">
+
+    <Border Height="Auto" Background="White"
+            Style="{StaticResource MaxHeightInTable}"
+            Effect="{StaticResource CommonShadow}"
+            Padding="20 10 20 20" Margin="25" 
+            CornerRadius="25" 
+            VerticalAlignment="Stretch" 
+            HorizontalAlignment="Stretch">
+
+        <ScrollViewer VerticalScrollBarVisibility="Visible" 
+                      Padding="0 0 20 0">
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="40"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Label Content="Admin Panel" 
+                       Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"
+                       FontSize="22" FontWeight="Bold"
+                       Margin="0 0 0 10"
+                       HorizontalAlignment="Center"/>
+
+                <StackPanel Grid.Row="1" Grid.Column="0">
+
+                    <Label Content="Add Genre:" 
+                           FontSize="13" FontWeight="SemiBold"/>
+
+                    <ComboBox x:Name="ComboBoxGenreName" 
+                              Margin="0 5 0 10" FontSize="13" 
+                              IsEditable="True" 
+                              Loaded="ComboBoxLoadedHandler"/>
+
+                    <TextBox x:Name="TextBoxGenreDescription" 
+                             MinHeight="70" Margin="0 0 0 10"
+                             FontSize="13" TextWrapping="Wrap"/>
+
+                    <Button x:Name="ButtonAddGenre" 
+                            Content="Add Genre" 
+                            Visibility="Collapsed"
+                            Padding="3" FontSize="13" 
+                            Click="ButtonClickHandler"/>
+
+                    <Button x:Name="ButtonUpdateGenre" 
+                            Content="Update Genre"
+                            Padding="3" FontSize="13" 
+                            Click="ButtonClickHandler"/>
+
+                    <Button x:Name="ButtonDeleteGenre" 
+                            Content="Delete Genre"
+                            Padding="3" Margin="0 10 0 0" 
+                            FontSize="13" 
+                            Click="ButtonClickHandler"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="1" Grid.Column="2">
+
+                    <Label Content="Ban User (by Username):"
+                           FontSize="13" FontWeight="SemiBold"/>
+
+                    <ComboBox x:Name="ComboBoxBanUser" 
+                              Margin="0 5 0 5" FontSize="13" 
+                              IsEditable="True"/>
+
+                    <Label Content="Ban Until:"
+                           FontSize="13"/>
+
+                    <DatePicker x:Name="DatePickerBanUser" 
+                                Margin="0 5 0 20" FontSize="13"/>
+
+                    <Button x:Name="ButtonBan" 
+                            Content="Ban User" 
+                            Margin="0 0 0 10" Padding="3" 
+                            FontSize="13" 
+                            Click="ButtonClickHandler"/>
+
+                    <Button x:Name="ButtonDelete" 
+                            Content="Delete Account" 
+                            Margin="0 0 0 10" Padding="3" 
+                            FontSize="13" 
+                            Click="ButtonClickHandler"/>
+
+
+                    <Label x:Name="LabelPromoteUser" 
+                           Content="Promote to Admin:" 
+                           Margin="0 15 0 0" FontSize="13" 
+                           FontWeight="SemiBold"/>
+
+                    <ComboBox x:Name="ComboBoxPromoteUser" 
+                              Margin="0 5 0 10" FontSize="13" 
+                              IsEditable="True"/>
+
+                    <Button x:Name="ButtonPromote" 
+                            Content="Promote"
+                            Padding="3" FontSize="13" 
+                            Click="ButtonClickHandler"/>
+                </StackPanel>
+
+            </Grid>
+        </ScrollViewer>
+
+    </Border>
+</Page>

@@ -1,0 +1,17 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style x:Key="MaxHeightInTable" TargetType="FrameworkElement">
+
+        <Setter Property="MaxHeight">
+            <Setter.Value>
+
+                <Binding Path="ActualHeight" 
+                         RelativeSource="{RelativeSource AncestorType=Grid}" />
+
+
+            </Setter.Value>
+        </Setter>
+
+    </Style>
+</ResourceDictionary>

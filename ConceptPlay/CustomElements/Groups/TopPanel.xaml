@@ -1,0 +1,53 @@
+﻿<UserControl x:Class="ConceptPlay.CustomElements.Groups.TopPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:object="clr-namespace:ConceptPlay.CustomElements.Objects"
+             mc:Ignorable="d" x:Name="Root"
+             HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+    
+    <Grid Background="#1E1E2F">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*" MinWidth="235" MaxWidth="320"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="2*" MinWidth="105" MaxWidth="125"/>
+            <ColumnDefinition Width="2*" MinWidth="90"  MaxWidth="105"/>
+            <ColumnDefinition Width="2*" MinWidth="110" MaxWidth="130"/>
+            <ColumnDefinition Width="4*" MinWidth="105" x:Name="ColumnButtonLogin"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition MinHeight="50" MaxHeight="80"/>
+        </Grid.RowDefinitions>
+
+        <Label Content="ConceptPlay" Foreground="White"
+               Grid.Column="0" Margin="25 0 0 0"
+               FontSize="30" FontWeight="Bold"
+               HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+        <object:TextButton x:Name="ButtonAdmin" Content="💻 Admin"
+                           Grid.Column="2" Margin="5 0" 
+                           Foreground="White" HoverForeground="#FF27489D"
+                           VerticalAlignment="Center" HorizontalAlignment="Center"
+                           FontSize="18" Click="ButtonClickHandler"/>
+
+        <object:TextButton x:Name="ButtonHub" Content="⌂ Hub"
+                           Grid.Column="3" Margin="15 0"
+                           Foreground="White" HoverForeground="#FF27489D"
+                           VerticalAlignment="Center" HorizontalAlignment="Center"
+                           FontSize="18" Click="ButtonClickHandler"/>
+
+        <object:TextButton x:Name="ButtonNewConcept" Content="➕ Concept"
+                           Grid.Column="4" Margin="5 0"
+                           Foreground="White" HoverForeground="#FF27489D"
+                           VerticalAlignment="Center" HorizontalAlignment="Center"
+                           FontSize="18" Click="ButtonClickHandler"/>
+
+        <object:TextButton x:Name="ButtonLogin" Content="🔑 Login"
+                           Grid.Column="5" Margin="15 5"
+                           Foreground="White" HoverForeground="#FF27489D"
+                           VerticalAlignment="Center" HorizontalAlignment="Center"
+                           FontSize="18" Click="ButtonClickHandler" Cursor="Hand"/>
+    </Grid>
+</UserControl>

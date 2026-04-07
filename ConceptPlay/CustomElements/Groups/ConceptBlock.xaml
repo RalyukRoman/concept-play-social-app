@@ -1,0 +1,136 @@
+﻿<UserControl x:Class="ConceptPlay.CustomElements.Groups.ConceptBlock"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:group="clr-namespace:ConceptPlay.CustomElements.Groups"
+             mc:Ignorable="d" x:Name="Root"
+             HorizontalAlignment="Stretch" 
+             Width="Auto" MinWidth="450">
+
+    <Border Background="White" 
+            Padding="20 10" Margin="0 5"
+            Effect="{StaticResource LittleShadow}"
+            CornerRadius="25"
+            HorizontalAlignment="Stretch">
+
+        <StackPanel HorizontalAlignment="Stretch">
+
+            <TextBlock x:Name="TextBlockTitle" Text="--Title--"
+                       TextWrapping="Wrap"
+                       FontSize="17" FontWeight="SemiBold"/>
+
+            <Grid Margin="0 7 0 10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*" x:Name="ColumnAuthor"/>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Border x:Name="BorderAvatar"
+                        Grid.Column="0"
+                        Width="20" Height="20"
+                        CornerRadius="10" Margin="0 0 8 0"
+                        Background="Transparent" 
+                        BorderBrush="Transparent"
+                        ClipToBounds="True"
+                        Visibility="Collapsed">
+
+                    <Image x:Name="ImageAvatar"
+                           Stretch="UniformToFill"
+                           Width="20" Height="20">
+                        
+                        <Image.Clip>
+                            <EllipseGeometry Center="10, 10" 
+                                             RadiusX="11.5" RadiusY="11.5"/>
+                        </Image.Clip>
+                        
+                    </Image>
+
+                </Border>
+
+                <TextBlock x:Name="TextBlockAuthor" Text="👤 --Author--"
+                           Grid.Column="1" FontSize="15"
+                           TextTrimming="CharacterEllipsis" TextWrapping="NoWrap"
+                           Foreground="DarkSlateGray"/>
+
+                <TextBlock x:Name="TextBlockCreateDate" Text="📅 --Create date--"
+                           Grid.Column="3"
+                           FontSize="15"
+                           Foreground="DarkSlateGray"/>
+
+                <Rectangle x:Name="RectangleBetweenDates"
+                           Width="1" Height="15"
+                           Grid.Column="4"
+                           Margin="10 0"
+                           Fill="DarkSlateGray"
+                           VerticalAlignment="Center"/>
+
+                <TextBlock x:Name="TextBlockChangeDate"
+                           Text="⚙️ --Change date--"
+                           Grid.Column="5"
+                           TextWrapping="Wrap"
+                           FontSize="15"
+                           Foreground="DarkSlateGray"/>
+            </Grid>
+
+            <ItemsControl x:Name="ItemsControlGenres"
+                          Margin="0 5"
+                          ItemsSource="{Binding Genres}">
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <group:GenreBlock Margin="0 2"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel x:Name="WrapPanelGenres"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+            </ItemsControl>
+
+            <TextBlock x:Name="TextBlockDescription"
+                       Text="--Description--" 
+                       TextWrapping="Wrap"
+                       FontSize="13" Margin="0 5"/>
+
+            <StackPanel Orientation="Horizontal"
+                        Margin="0 5 0 0">
+
+                <TextBlock x:Name="TextBlockViews"
+                           Text="👁️ --Views--"
+                           TextWrapping="Wrap"
+                           FontSize="15"
+                           Foreground="DarkSlateGray"/>
+
+                <Rectangle Width="1" Height="15"
+                           Margin="10 0"
+                           Fill="DarkSlateGray"
+                           VerticalAlignment="Center"/>
+
+                <TextBlock x:Name="TextBlockLikes"
+                           Text="❤️ --Likes--"
+                           TextWrapping="Wrap"
+                           FontSize="15"
+                           Foreground="DarkSlateGray"/>
+
+                <Rectangle Width="1" Height="15"
+                           Margin="10 0"
+                           Fill="DarkSlateGray"
+                           VerticalAlignment="Center"/>
+
+                <TextBlock x:Name="TextBlockComments"
+                           Text="💬 --Comments--"
+                           TextWrapping="Wrap"
+                           FontSize="15"
+                           Foreground="DarkSlateGray"/>
+            </StackPanel>
+        </StackPanel>
+    </Border>
+</UserControl>

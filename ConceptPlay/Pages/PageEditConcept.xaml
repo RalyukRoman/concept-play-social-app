@@ -1,0 +1,147 @@
+﻿<Page x:Class="ConceptPlay.Pages.PageEditConcept"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:group="clr-namespace:ConceptPlay.CustomElements.Groups"
+      xmlns:object="clr-namespace:ConceptPlay.CustomElements.Objects"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="850"
+      Title="New concept" Background="#F5F5F5">
+
+    <Border Height="Auto" Background="White"
+            Style="{StaticResource MaxHeightInTable}"
+            Effect="{StaticResource CommonShadow}"
+            Padding="20 10 20 20" Margin="25"
+            CornerRadius="25" 
+            VerticalAlignment="Stretch" 
+            HorizontalAlignment="Stretch">
+        <Grid>
+
+            <ScrollViewer x:Name="ScrollViewerContent"
+                          VerticalScrollBarVisibility="Visible" 
+                          Padding="0 0 15 0">
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="15*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*" MinHeight="35"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBox x:Name="TextBoxTitle"
+                             Grid.Column="0" Grid.Row="0"
+                             FontSize="25" FontWeight="DemiBold"
+                             Margin="0 0 5 5"
+                             HorizontalAlignment="Stretch" VerticalAlignment="Center" 
+                             TextChanged="TextChangedHandler"/>
+
+                    <TextBlock x:Name="PlaceholderTextTitle" Text="Enter title..."
+                               Grid.Column="0" Grid.Row="0"
+                               Margin="5 0 5 5"
+                               Foreground="DimGray"
+                               FontSize="25"
+                               IsHitTestVisible="False"
+                               VerticalAlignment="Center"/>
+
+                    <object:TextButton x:Name="ButtonDelete" Content="🗑️"
+                                       Foreground="Black"
+                                       HoverForeground="Red"
+                                       Grid.Row="0" Grid.Column="1"
+                                       Margin="10 0 25 0"
+                                       FontSize="20" 
+                                       VerticalAlignment="Center"
+                                       Click="ButtonClickHandler"/>
+
+                    <ComboBox x:Name="ComboBoxGenres"
+                              Grid.Row="0" Grid.Column="2"
+                              IsEditable="False" FontSize="13"
+                              Margin="5" 
+                              VerticalContentAlignment="Center"/>
+
+                    <Button x:Name="ButtonGenre" Content=">"
+                            Width="30"
+                            Grid.Row="0" Grid.Column="3"
+                            FontSize="20"
+                            Margin="5" 
+                            Click="ButtonClickHandler"/>
+
+                    <ItemsControl x:Name="WrapPanelGenres"
+                                  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4"
+                                  Margin="0 15"
+                                  ItemsSource="{Binding GenresCollection}">
+
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <group:GenreBlock Cursor="Hand"
+                                                  MouseDown="GenreBlockClickHandler"
+                                                  Margin="0 2"/>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+
+                    </ItemsControl>
+
+                    <TextBox x:Name="TextBoxDescription"
+                             MinHeight="100"
+                             Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4"
+                             FontSize="15" TextWrapping="Wrap"
+                             Margin="0 5" Padding="0 5"
+                             TextChanged="TextChangedHandler"/>
+
+                    <TextBlock x:Name="PlaceholderTextDescription" 
+                               Text="Enter description..."
+                               Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4"
+                               Margin="5 10"
+                               Foreground="DimGray"
+                               FontSize="15"
+                               IsHitTestVisible="False"
+                               VerticalAlignment="Top"/>
+
+                    <ScrollViewer Height="100" Margin="0 10 0 0"
+                                  Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="4"
+                                  HorizontalScrollBarVisibility="Auto"
+                                  VerticalScrollBarVisibility="Disabled">
+
+                        <StackPanel x:Name="StackPanelImages"
+                                    Orientation="Horizontal">
+
+                            <object:RoundedButton x:Name="ButtonAddImage" 
+                                                  Width="100" Content="➕"
+                                                  Background="Transparent"
+                                                  FontSize="30"
+                                                  Click="ButtonClickHandler"/>
+                        </StackPanel>
+                    </ScrollViewer>
+
+                    <Button x:Name="ButtonPublish" Content="Publish" Height="35" 
+                            Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="4"
+                            FontSize="20" FontWeight="Bold"
+                            Background="#2e2e4d" Foreground="White" BorderBrush="Transparent"
+                            VerticalAlignment="Bottom"
+                            Click="ButtonClickHandler" Margin="0,15,0,0"/>
+                </Grid>
+            </ScrollViewer>
+
+            <group:ImageRequestWindow x:Name="ImageWindow"
+                                      Visibility="Collapsed"
+                                      Submitted="SubmittedImageWindowHandler"
+                                      Closed="ClosedImageWindowHandler"/>
+        </Grid>
+    </Border>
+</Page>

@@ -1,0 +1,22 @@
+﻿<Application x:Class="ConceptPlay.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             StartupUri="MainWindow.xaml">
+    
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="CustomElements/Geometries/Heart.xaml"/>
+                <ResourceDictionary Source="CustomElements/Geometries/Like.xaml"/>
+                <ResourceDictionary Source="CustomElements/Geometries/Dislike.xaml"/>
+                <ResourceDictionary Source="CustomElements/Styles/MaxHeightInTable.xaml"/>
+                <ResourceDictionary Source="CustomElements/Effects/Shadows.xaml"/>
+                <ResourceDictionary Source="CustomElements/Effects/Blurs.xaml"/>
+                <ResourceDictionary Source="CustomElements/Objects/RoundedButton.xaml"/>
+                <ResourceDictionary Source="CustomElements/Objects/TextButton.xaml"/>
+                <ResourceDictionary Source="CustomElements/Objects/GeometryCheckBox.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+
+</Application>

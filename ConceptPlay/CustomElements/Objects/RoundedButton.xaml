@@ -1,0 +1,52 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:object="clr-namespace:ConceptPlay.CustomElements.Objects"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <object:BrushOpacityConverter x:Key="BrushOpacityConverter"/>
+
+    <Style TargetType="object:RoundedButton">
+
+        <Setter Property="Template">
+            <Setter.Value>
+
+                <ControlTemplate TargetType="object:RoundedButton">
+
+                    <Border x:Name="borderBasic"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Padding="{TemplateBinding Padding}"
+                            CornerRadius="{TemplateBinding CornerRadius}">
+
+                        <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"/>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+
+                        <Trigger Property="IsMouseOver" Value="True">
+
+                            <Setter TargetName="borderBasic" Property="Background" 
+                                    Value="{Binding RelativeSource={RelativeSource TemplatedParent}, 
+                                            Path=Background, ConverterParameter=0.85,
+                                            Converter={StaticResource BrushOpacityConverter}}"/>
+                        </Trigger>
+
+                        <Trigger Property="IsPressed" Value="True">
+
+                            <Setter TargetName="borderBasic" Property="Background"
+                                    Value="{Binding RelativeSource={RelativeSource TemplatedParent}, 
+                                            Path=Background, ConverterParameter=0.75,
+                                            Converter={StaticResource BrushOpacityConverter}}"/>
+                        </Trigger>
+
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+
+            </Setter.Value>
+        </Setter>
+
+    </Style>
+
+</ResourceDictionary>
